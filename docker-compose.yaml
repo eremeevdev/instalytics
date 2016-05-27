@@ -1,0 +1,9 @@
+backend:
+  build: backend
+  volumes:
+    - "./:/app"
+  ports:
+    - "8888:8888"
+  environment:
+    PYTHONUNBUFFERED: 1
+  command: python manage.py runserver 0.0.0.0:8888
