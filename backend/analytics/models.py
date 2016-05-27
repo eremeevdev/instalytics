@@ -1,10 +1,11 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 
-class User(models.Model):
+class InstaUser(models.Model):
 
-    id = models.IntegerField(primary_key=True)
-    username = models.CharField(max_length=64)
+    username = models.CharField(max_length=64, primary_key=True)
+    user = models.ForeignKey(User)
 
     def __str__(self):
         return self.username
@@ -12,7 +13,7 @@ class User(models.Model):
 
 class Stat(models.Model):
 
-    user = models.ForeignKey(User)
+    user = models.ForeignKey(InstaUser)
 
     followed_by = models.IntegerField()
     follows = models.IntegerField()
