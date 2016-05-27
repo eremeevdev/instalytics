@@ -2,6 +2,8 @@ import re
 import json
 import requests
 
+from analytics.models import User, Stat
+
 BASE_URL = 'https://www.instagram.com'
 
 
@@ -24,6 +26,6 @@ def get_stat(username):
     }
 
 
-if __name__ == '__main__':
-    stat = get_stat('heckf')
-    print(stat)
+def update_stat():
+    for user in User.objects.all():
+        pass
