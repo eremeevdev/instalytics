@@ -18,5 +18,7 @@ class Stat(models.Model):
     follows = models.IntegerField()
     media_count = models.IntegerField()
 
+    date = models.DateField()
+
     def __str__(self):
         return '{}: {}, {}, {}'.format(self.user, self.followed_by, self.follows, self.media_count)
