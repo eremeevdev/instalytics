@@ -1,7 +1,7 @@
-from rest_framework.generics import ListCreateAPIView, DestroyAPIView
+from rest_framework.generics import ListCreateAPIView, DestroyAPIView, ListAPIView
 from rest_framework.permissions import IsAuthenticated
-from analytics.models import InstaUser
-from analytics.serializers import InstaUserSerializer
+from analytics.models import InstaUser, Stat
+from analytics.serializers import InstaUserSerializer, StatSerializer
 
 
 class InstaUserListCreateAPIView(ListCreateAPIView):
@@ -22,3 +22,14 @@ class InstaUserDestroyAPIView(DestroyAPIView):
 
     def get_queryset(self):
         return InstaUser.objects.filter(user=self.request.user)
+
+
+class StatListAPIView(ListAPIView):
+
+    serializer_class = StatSerializer
+    permission_classes = (IsAuthenticated,)
+
+    def get_queryset(self):
+        # pk = self.kwargs['pk']
+        # return Stat.objects.filter(user_id=pk).order_by('-date')
+        return Stat.objects.all()
