@@ -2,6 +2,8 @@ import re
 import json
 import requests
 
+from datetime import datetime
+
 from analytics.models import User, Stat
 
 BASE_URL = 'https://www.instagram.com'
@@ -27,5 +29,9 @@ def get_stat(username):
 
 
 def update_stat():
+
+    today = datetime.now().date()
+
     for user in User.objects.all():
-        pass
+        stat = get_stat(user.username)
+        Stat.objects.update_or_create(user_id=user.id, date=today, defaults=stat)
