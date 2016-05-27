@@ -7,3 +7,12 @@ backend:
   environment:
     PYTHONUNBUFFERED: 1
   command: python manage.py runserver 0.0.0.0:8888
+
+frontend:
+  build: frontend
+  volumes:
+    - "./frontend:/app"
+  ports:
+    - "3000:3000"
+    - "3001:3001"
+  command: npm start
