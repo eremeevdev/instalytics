@@ -30,6 +30,5 @@ class StatListAPIView(ListAPIView):
     permission_classes = (IsAuthenticated,)
 
     def get_queryset(self):
-        # pk = self.kwargs['pk']
-        # return Stat.objects.filter(user_id=pk).order_by('-date')
-        return Stat.objects.all()
+        pk = self.kwargs['pk']
+        return Stat.objects.filter(user_id=pk).order_by('-date')
