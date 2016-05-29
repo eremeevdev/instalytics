@@ -1,12 +1,25 @@
-FROM node:5
+# To build and run with Docker:
+#
+#  $ docker build -t ng2-quickstart .
+#  $ docker run -it --rm -p 3000:3000 -p 3001:3001 ng2-quickstart
+#
+FROM node:latest
+
+#RUN mkdir -p /quickstart /home/nodejs && \
+#    groupadd -r nodejs && \
+#    useradd -r -g nodejs -d /home/nodejs -s /sbin/nologin nodejs && \
+#    chown -R nodejs:nodejs /home/nodejs
 
 RUN mkdir /app
-VOLUME /app
 WORKDIR /app
-
+VOLUME /app
 EXPOSE 3000
 EXPOSE 3001
+#COPY package.json typings.json /quickstart/
+#RUN npm install --unsafe-perm=true
 
-COPY package.json /app
+#COPY . /quickstart
+#RUN chown -R nodejs:nodejs /quickstart
+#USER nodejs
 
-RUN npm install
+#CMD npm start
