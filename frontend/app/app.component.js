@@ -10,8 +10,10 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require('@angular/core');
 var router_deprecated_1 = require('@angular/router-deprecated');
+var http_1 = require('@angular/http');
 var login_component_1 = require('./login.component');
 var users_component_1 = require('./users.component');
+var login_service_1 = require('./login.service');
 var AppComponent = (function () {
     function AppComponent() {
     }
@@ -20,7 +22,7 @@ var AppComponent = (function () {
             selector: 'my-app',
             template: "\n        <h1>Instalytics</h1>\n        <router-outlet></router-outlet>\n    ",
             directives: [router_deprecated_1.ROUTER_DIRECTIVES],
-            providers: [router_deprecated_1.ROUTER_PROVIDERS]
+            providers: [router_deprecated_1.ROUTER_PROVIDERS, http_1.HTTP_PROVIDERS, login_service_1.LoginService]
         }),
         router_deprecated_1.RouteConfig([
             { path: '/login', name: 'Login', component: login_component_1.LoginComponent },

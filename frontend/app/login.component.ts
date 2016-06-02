@@ -1,9 +1,18 @@
 import {Component} from '@angular/core';
+import { LoginService } from './login.service';
 
 @Component({
     selector: 'login',
-    template: `
-        <h1>Login Component</h1>
-    `
+    templateUrl: 'app/login.template.html'
 })
-export class LoginComponent { }
+export class LoginComponent {
+
+    login: string;
+    password: string;
+
+    constructor(private loginService: LoginService) { }
+
+    doLogin() {
+    	this.loginService.doLogin(this.login, this.password)
+    }
+}

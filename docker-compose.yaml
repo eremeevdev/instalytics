@@ -16,3 +16,13 @@ frontend:
     - "3000:3000"
     - "3001:3001"
   command: npm start
+
+nginx:
+  image: nginx
+  links:
+    - backend
+    - frontend
+  ports:
+    - "9999:9999"
+  volumes:
+    - "./nginx/insta.conf:/etc/nginx/conf.d/insta.conf"
