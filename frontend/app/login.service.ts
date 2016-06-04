@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Headers, Http, Jsonp } from '@angular/http';
+import { Headers, Http, Response } from '@angular/http';
 import { Cookie } from 'ng2-cookies/ng2-cookies';
 
 import 'rxjs/add/operator/toPromise';
@@ -25,7 +25,15 @@ export class LoginService {
             'Content-Type': 'application/json',
             'X-CSRFToken': csrfToken
         });
-        this.http.post('/api/token_auth/', body, {headers: headers}).toPromise()
+
+        this.http.post('/api/token_auth/', body, { headers: headers })
+            .toPromise()
+            .then(res => {
+                this.setToken(res.json().token)
+            })
+            .catch(function(err: any) {
+                console.log(err);
+            });
     }
 
 }
