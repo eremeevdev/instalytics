@@ -6,10 +6,7 @@ import { UserAddComponent } from './user-add.component';
 
 @Component({
     selector: 'users',
-    template: `
-        <h1>Users Component</h1>
-        <user-add></user-add>
-    `,
+    templateUrl: 'app/users.component.html',
     directives: [UserAddComponent],
 })
 export class UsersComponent implements OnInit {
