@@ -17,7 +17,7 @@ export class ApiService {
         let headers = new Headers({
             'Content-Type': 'application/json',
             'X-CSRFToken': csrfToken,
-            'WWW-Authenticate': this.token.getToken()
+            'Authorization': 'Token ' + this.token.getToken()
         });
 
         return this.http.post(url, body, { headers: headers }).toPromise();
