@@ -16,8 +16,8 @@ export class ApiService {
         let csrfToken = Cookie.get('csrftoken');
         let headers = new Headers({
             'Content-Type': 'application/json',
-            // 'X-CSRFToken': csrfToken,
-            // 'Authorization': 'Token: ' + this.token.getToken()
+            'X-CSRFToken': csrfToken,
+            'Authorization': 'Token: ' + this.token.getToken()
         });
 
         return this.http.post(url, body, { headers: headers }).toPromise();
