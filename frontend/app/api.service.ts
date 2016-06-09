@@ -17,7 +17,7 @@ export class ApiService {
         let headers = new Headers({
             'Content-Type': 'application/json',
             'X-CSRFToken': csrfToken,
-            'Authorization': 'Token: ' + this.token.getToken()
+            'WWW-Authenticate': this.token.getToken()
         });
 
         return this.http.post(url, body, { headers: headers }).toPromise();
@@ -25,7 +25,14 @@ export class ApiService {
 
     get(url: string) {
 
-        return this.http.get(url).toPromise();
+        let headers = new Headers({
+            'Content-Type': 'application/json',
+            'Authorization': 'Token ' + this.token.getToken()
+        });
+
+        console.log(this.token.getToken());
+
+        return this.http.get(url, { headers: headers }).toPromise();
     }
 
 }
