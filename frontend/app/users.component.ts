@@ -1,11 +1,16 @@
-import {Component, OnInit} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router-deprecated';
 import { ApiService } from './api.service';
 import { TokenService } from './token.service';
+import { UserAddComponent } from './user-add.component';
 
 @Component({
     selector: 'users',
-    template: '<h1>Users Component</h1>'
+    template: `
+        <h1>Users Component</h1>
+        <user-add></user-add>
+    `,
+    directives: [UserAddComponent],
 })
 export class UsersComponent implements OnInit {
 
