@@ -1,21 +1,28 @@
 import {Component, OnInit} from '@angular/core';
 import { Router } from '@angular/router-deprecated';
-import { LoginService } from './login.service';
+import { ApiService } from './api.service';
+import { TokenService } from './token.service';
 
 @Component({
-	selector: 'users',
-    template: `
-        <h1>Users Component</h1>
-    `
+    selector: 'users',
+    template: '<h1>Users Component</h1>'
 })
 export class UsersComponent implements OnInit {
 
-	constructor(private loginService: LoginService, private router: Router) { }
+    constructor(private api: ApiService, private token: TokenService, private router: Router) { }
 
-	ngOnInit() {
-		if(this.loginService.getToken().length == 0) {
-			this.router.navigate(['Login']);
-		}
-	}
+    ngOnInit() {
+
+        this.api.get('/api/insta_users/')
+            .then((response) => {
+                console.log(response);
+            })
+            .catch((err) => {
+                console.log(err);
+                if(err.status == 401) {
+                    this.router.navigate(['Login']);
+                }
+            });
+    }
 
 }

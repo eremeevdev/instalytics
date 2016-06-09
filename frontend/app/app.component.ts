@@ -7,7 +7,8 @@ import { HTTP_PROVIDERS} from '@angular/http';
 import { LoginComponent } from './login.component';
 import { UsersComponent } from './users.component';
 
-import { LoginService } from './login.service';
+import { TokenService } from './token.service';
+import { ApiService } from './api.service';
 
 @Component({
     selector: 'my-app',
@@ -16,7 +17,7 @@ import { LoginService } from './login.service';
         <router-outlet></router-outlet>
     `,
     directives: [ROUTER_DIRECTIVES],
-    providers: [ROUTER_PROVIDERS, HTTP_PROVIDERS, LoginService]
+    providers: [ROUTER_PROVIDERS, HTTP_PROVIDERS, ApiService, TokenService]
 })
 @RouteConfig([
     { path: '/login', name: 'Login', component: LoginComponent },
