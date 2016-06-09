@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { ApiService } from './api.service';
-import { Router } from '@angular/router-deprecated';
 
 
 @Component({
@@ -16,6 +15,7 @@ export class UserAddComponent {
 	addUser() {
 		this.api.post('/api/insta_users/', { username: this.username })
 			.then((response) => {
+				this.username = '';
 				console.log(response);
 			})
 			.catch((err) => {
