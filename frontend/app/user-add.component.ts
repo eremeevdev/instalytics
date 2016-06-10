@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, Output, EventEmitter } from '@angular/core';
 import { ApiService } from './api.service';
+import { InstaUser } from './insta-user';
 
 
 @Component({
@@ -12,11 +13,13 @@ export class UserAddComponent {
 
 	constructor(private api: ApiService) { }
 
+	@Output() onUserAdd = new EventEmitter<InstaUser>();
+
 	addUser() {
 		this.api.post('/api/insta_users/', { username: this.username })
 			.then((response) => {
 				this.username = '';
-				console.log(response);
+				this.onUserAdd.emit(response.json());
 			})
 			.catch((err) => {
 				console.log(err);
