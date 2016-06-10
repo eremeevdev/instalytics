@@ -30,8 +30,6 @@ export class ApiService {
             'Authorization': 'Token ' + this.token.getToken()
         });
 
-        console.log(this.token.getToken());
-
         return this.http.get(url, { headers: headers }).toPromise();
     }
 

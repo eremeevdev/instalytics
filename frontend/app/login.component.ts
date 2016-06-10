@@ -19,8 +19,6 @@ export class LoginComponent {
 		this.api.post('/api/token_auth/', { username: this.login, password: this.password })
 			.then((response) => {
 
-				console.log(response);
-
 				let data = response.json();
 
 				this.token.setToken(data['token']);
