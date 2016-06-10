@@ -16,6 +16,10 @@ export class UsersComponent implements OnInit {
 
     users: InstaUser[];
 
+    onUserAdd(user: InstaUser) {
+        this.users.push(user);
+    }
+
     ngOnInit() {
 
         this.api.get('/api/insta_users/')

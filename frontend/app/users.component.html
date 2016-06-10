@@ -1,5 +1,5 @@
 <h1>Users Component</h1>
-<user-add></user-add>
+<user-add (onUserAdd)="onUserAdd($event)"></user-add>
 
 <ul>
 	<li *ngFor="let user of users">{{ user.username }}</li>
