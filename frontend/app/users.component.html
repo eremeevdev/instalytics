@@ -2,5 +2,7 @@
 <user-add (onUserAdd)="onUserAdd($event)"></user-add>
 
 <ul>
-	<li *ngFor="let user of users">{{ user.username }}</li>
+	<li *ngFor="let user of users">
+		<a (click)="onUserClick(user.username)">{{ user.username }}</a>
+	</li>
 </ul>

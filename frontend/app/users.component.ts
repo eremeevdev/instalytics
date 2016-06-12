@@ -20,6 +20,10 @@ export class UsersComponent implements OnInit {
         this.users.push(user);
     }
 
+    onUserClick(username: string) {
+        this.router.navigate(['UserStat', { username: username }]);
+    }
+
     ngOnInit() {
 
         this.api.get('/api/insta_users/')
