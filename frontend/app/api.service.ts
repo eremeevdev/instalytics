@@ -23,6 +23,19 @@ export class ApiService {
         return this.http.post(url, body, { headers: headers }).toPromise();
     }
 
+    delete(url: string) {
+
+        let csrfToken = Cookie.get('csrftoken');
+        let headers = new Headers({
+            'Content-Type': 'application/json',
+            'X-CSRFToken': csrfToken,
+            'Authorization': 'Token ' + this.token.getToken()
+        });
+
+        return this.http.delete(url, { headers: headers }).toPromise();
+    }
+
+
     get(url: string) {
 
         let headers = new Headers({

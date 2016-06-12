@@ -24,6 +24,19 @@ export class UsersComponent implements OnInit {
         this.router.navigate(['UserStat', { username: username }]);
     }
 
+    onUserRemove(username: string) {
+        this.api.delete(`/api/insta_users/${username}/`)
+            .then((response) => {
+                this.users = this.users.filter((user) => { return user.username != username });
+            })
+            .catch((err) => {
+                console.log(err);
+                if (err.status == 401) {
+                    this.router.navigate(['Login']);
+                }
+            });
+    }
+
     ngOnInit() {
 
         this.api.get('/api/insta_users/')
