@@ -1,0 +1,15 @@
+<h1>User stat</h1>
+<table>
+	<tr>
+		<td>Date</td>
+		<td>Media count</td>
+		<td>Followed By</td>
+		<td>Follows</td>
+	</tr>
+	<tr *ngFor="let stat of statList">
+		<td>{{ stat.date }}</td>
+		<td>{{ stat.media_count }}</td>
+		<td>{{ stat.followed_by }}</td>
+		<td>{{ stat.follows }}</td>
+	</tr>
+</table>
