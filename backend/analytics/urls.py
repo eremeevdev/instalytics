@@ -2,7 +2,9 @@ from django.conf.urls import url
 
 from rest_framework.authtoken import views
 
-from analytics.views import InstaUserListCreateAPIView, InstaUserDestroyAPIView, StatListAPIView
+from analytics.views import (
+    InstaUserListCreateAPIView, InstaUserDestroyAPIView, StatListAPIView
+)
 
 urlpatterns = [
     url(r'^insta_users/$', InstaUserListCreateAPIView.as_view()),

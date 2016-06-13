@@ -1,4 +1,6 @@
-from rest_framework.generics import ListCreateAPIView, DestroyAPIView, ListAPIView
+from rest_framework.generics import (
+    ListCreateAPIView, DestroyAPIView, ListAPIView
+)
 from rest_framework.permissions import IsAuthenticated
 from analytics.models import InstaUser, Stat
 from analytics.serializers import InstaUserSerializer, StatSerializer

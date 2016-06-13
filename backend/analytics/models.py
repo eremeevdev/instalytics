@@ -29,7 +29,8 @@ class Stat(models.Model):
     date = models.DateField()
 
     def __str__(self):
-        return '{}: {}, {}, {}'.format(self.user, self.followed_by, self.follows, self.media_count)
+        return '{}: {}, {}, {}'.format(self.user, self.followed_by,
+                                       self.follows, self.media_count)
 
 
 class ChangeLog(models.Model):

@@ -15,7 +15,8 @@ def get_stat(username):
 
     resp = requests.get(url)
 
-    match = re.search('window\._sharedData = (?P<data>.*);</script>', resp.content.decode('utf-8'))
+    match = re.search('window\._sharedData = (?P<data>.*);</script>',
+                      resp.content.decode('utf-8'))
 
     data = json.loads(match.group('data'))
 
@@ -34,4 +35,5 @@ def update_stat():
 
     for user in InstaUser.objects.all():
         stat = get_stat(user.username)
-        Stat.objects.update_or_create(user_id=user.username, date=today, defaults=stat)
+        Stat.objects.update_or_create(user_id=user.username, date=today,
+                                      defaults=stat)
