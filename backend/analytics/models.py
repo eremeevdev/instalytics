@@ -6,6 +6,12 @@ from django.contrib.auth.models import User
 class InstaUser(models.Model):
 
     username = models.CharField(max_length=64, primary_key=True)
+
+    biography = models.TextField(blank=True)
+    external_url = models.URLField(blank=True)
+    full_name = models.CharField(max_length=128, blank=True)
+    profile_pic_url = models.URLField(blank=True)
+
     user = models.ForeignKey(User)
 
     def __str__(self):
