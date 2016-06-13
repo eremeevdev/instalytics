@@ -26,16 +26,16 @@ class Stat(models.Model):
         return '{}: {}, {}, {}'.format(self.user, self.followed_by, self.follows, self.media_count)
 
 
-class Change(models.Model):
+class ChangeLog(models.Model):
 
     TARGET_BIO = 0
     TARGET_URL = 1
     TARGET_AVATAR = 2
 
     TARGET_CHOICES = (
-        ('Bio', TARGET_BIO),
-        ('URL', TARGET_URL),
-        ('Avatar', TARGET_AVATAR),
+        (TARGET_BIO, 'Bio'),
+        (TARGET_URL, 'URL'),
+        (TARGET_AVATAR, 'Avatar'),
     )
 
     user = models.ForeignKey(InstaUser)
