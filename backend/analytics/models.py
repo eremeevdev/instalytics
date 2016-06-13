@@ -23,3 +23,24 @@ class Stat(models.Model):
 
     def __str__(self):
         return '{}: {}, {}, {}'.format(self.user, self.followed_by, self.follows, self.media_count)
+
+
+class Change(models.Model):
+
+    TARGET_BIO = 0
+    TARGET_URL = 1
+    TARGET_AVATAR = 2
+
+    TARGET_CHOICES = (
+        ('Bio', TARGET_BIO),
+        ('URL', TARGET_URL),
+        ('Avatar', TARGET_AVATAR),
+    )
+
+    user = models.ForeignKey(InstaUser)
+    datetime = models.DateTimeField()
+    target = models.IntegerField(choices=TARGET_CHOICES)
+    value = models.TextField()
+
+    def __str__(self):
+        return '{}: {}'.target(self.user, self.value)
