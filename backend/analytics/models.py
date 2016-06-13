@@ -44,4 +44,4 @@ class ChangeLog(models.Model):
     value = models.TextField()
 
     def __str__(self):
-        return '{}: {}'.target(self.user, self.value)
+        return '{}: {}'.format(self.user, self.value)
