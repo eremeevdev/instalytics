@@ -11,4 +11,8 @@ export class TokenService {
         window.localStorage.setItem('token', token);
     }
 
+    removeToken() {
+		window.localStorage.removeItem('token');
+    }
+
 }
