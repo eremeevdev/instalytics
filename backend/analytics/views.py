@@ -45,4 +45,4 @@ class ChangeLogListAPIView(ListAPIView):
 
     def get_queryset(self):
         pk = self.kwargs['pk']
-        return ChangeLog.objects.filter(user_id=pk).order_by('-date')
+        return ChangeLog.objects.filter(user_id=pk).order_by('-datetime')
