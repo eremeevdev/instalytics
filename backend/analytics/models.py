@@ -41,4 +41,4 @@ class ChangeLog(models.Model):
     change = JSONField()
 
     def __str__(self):
-        return '{}: {}'.format(self.user, self.value)
+        return '{}: {}'.format(self.user, self.datetime)
