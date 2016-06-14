@@ -2,8 +2,10 @@ from rest_framework.generics import (
     ListCreateAPIView, DestroyAPIView, ListAPIView
 )
 from rest_framework.permissions import IsAuthenticated
-from analytics.models import InstaUser, Stat
-from analytics.serializers import InstaUserSerializer, StatSerializer
+from analytics.models import InstaUser, Stat, ChangeLog
+from analytics.serializers import (
+    InstaUserSerializer, StatSerializer, ChangeLogSerializer
+)
 
 
 class InstaUserListCreateAPIView(ListCreateAPIView):
@@ -34,3 +36,13 @@ class StatListAPIView(ListAPIView):
     def get_queryset(self):
         pk = self.kwargs['pk']
         return Stat.objects.filter(user_id=pk).order_by('-date')
+
+
+class ChangeLogListAPIView(ListAPIView):
+
+    serializer_class = ChangeLogSerializer
+    permission_classes = (IsAuthenticated,)
+
+    def get_queryset(self):
+        pk = self.kwargs['pk']
+        return ChangeLog.objects.filter(user_id=pk).order_by('-date')
