@@ -9,7 +9,7 @@ from analytics.models import InstaUser, Stat
 BASE_URL = 'https://www.instagram.com'
 
 
-def get_stat(username):
+def get_profile(username):
 
     url = '{}/{}/'.format(BASE_URL, username)
 
@@ -20,12 +20,25 @@ def get_stat(username):
 
     data = json.loads(match.group('data'))
 
-    user = data['entry_data']['ProfilePage'][0]['user']
+    return data['entry_data']['ProfilePage'][0]['user']
+
+
+def get_stat(profile_data):
 
     return {
-        'followed_by': user['followed_by']['count'],
-        'follows': user['follows']['count'],
-        'media_count': user['media']['count']
+        'followed_by': profile_data['followed_by']['count'],
+        'follows': profile_data['follows']['count'],
+        'media_count': profile_data['media']['count']
+    }
+
+
+def get_profile_info(profile_data):
+
+    return {
+        'biography': profile_data['biography'],
+        'external_url': profile_data['external_url'],
+        'full_name': profile_data['full_name'],
+        'profile_pic_url': profile_data['profile_pic_url_hd'],
     }
 
 
