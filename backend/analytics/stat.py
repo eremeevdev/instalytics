@@ -4,7 +4,7 @@ import requests
 
 from datetime import datetime
 
-from analytics.models import InstaUser, Stat
+from analytics.models import InstaUser, Stat, ChangeLog
 
 BASE_URL = 'https://www.instagram.com'
 
@@ -42,11 +42,35 @@ def get_profile_info(profile_data):
     }
 
 
-def update_stat():
+def update_info():
 
     today = datetime.now().date()
 
     for user in InstaUser.objects.all():
-        stat = get_stat(user.username)
+
+        # all info about instagram uer
+        profile_data = get_profile(user.username)
+
+        # stat info for Stat model
+        profile_stat = get_stat(profile_data)
         Stat.objects.update_or_create(user_id=user.username, date=today,
-                                      defaults=stat)
+                                      defaults=profile_stat)
+
+        # user profile info
+        profile_info = get_profile_info(profile_data)
+
+        changed = {}
+
+        for field, value in profile_info.items():
+
+            new_value = value or ''
+
+            current_value = getattr(user, field)
+
+            if current_value != new_value:
+                setattr(user, field, new_value)
+                changed[field] = new_value
+
+        if changed:
+            user.save()
+            ChangeLog.objects.create(user=user, change=changed)
