@@ -1,5 +1,7 @@
 <div>
-	<input type="text" placeholder="foo@bar.com" [(ngModel)]="login" />
-	<input type="password" [(ngModel)]="password" />
-	<input type="submit" (click)="doLogin()" />
+	<form class="form-inline">
+		<input type="text" placeholder="foo@bar.com" [(ngModel)]="login" class="form-control" />
+		<input type="password" [(ngModel)]="password" class="form-control" />
+		<a class="btn btn-default" (click)="doLogin()">Login</a>
+	</form>
 </div>
