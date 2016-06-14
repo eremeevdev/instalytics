@@ -1,6 +1,7 @@
 from django.db import models
 from django.utils import timezone
 from django.contrib.auth.models import User
+from django.contrib.postgres.fields import JSONField
 
 
 class InstaUser(models.Model):
@@ -35,20 +36,9 @@ class Stat(models.Model):
 
 class ChangeLog(models.Model):
 
-    TARGET_BIO = 0
-    TARGET_URL = 1
-    TARGET_AVATAR = 2
-
-    TARGET_CHOICES = (
-        (TARGET_BIO, 'Bio'),
-        (TARGET_URL, 'URL'),
-        (TARGET_AVATAR, 'Avatar'),
-    )
-
     user = models.ForeignKey(InstaUser)
     datetime = models.DateTimeField(default=timezone.now)
-    target = models.IntegerField(choices=TARGET_CHOICES)
-    value = models.TextField()
+    change = JSONField()
 
     def __str__(self):
         return '{}: {}'.format(self.user, self.value)
