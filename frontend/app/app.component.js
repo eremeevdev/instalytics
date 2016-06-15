@@ -23,7 +23,7 @@ var AppComponent = (function () {
     AppComponent = __decorate([
         core_1.Component({
             selector: 'my-app',
-            template: "\n        <h1>Instalytics</h1>\n        <router-outlet></router-outlet>\n    ",
+            templateUrl: 'app/app.component.html',
             directives: [router_deprecated_1.ROUTER_DIRECTIVES],
             providers: [router_deprecated_1.ROUTER_PROVIDERS, http_1.HTTP_PROVIDERS, api_service_1.ApiService, token_service_1.TokenService]
         }),

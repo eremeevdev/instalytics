@@ -14,10 +14,7 @@ import { ApiService } from './api.service';
 
 @Component({
     selector: 'my-app',
-    template: `
-        <h1>Instalytics</h1>
-        <router-outlet></router-outlet>
-    `,
+    templateUrl: 'app/app.component.html',
     directives: [ROUTER_DIRECTIVES],
     providers: [ROUTER_PROVIDERS, HTTP_PROVIDERS, ApiService, TokenService]
 })
