@@ -7,6 +7,7 @@ import { HTTP_PROVIDERS} from '@angular/http';
 import { LoginComponent } from './login.component';
 import { UsersComponent } from './users.component';
 import { UserStatComponent } from './user-stat.component';
+import { LogoutComponent } from './logout.component';
 
 import { TokenService } from './token.service';
 import { ApiService } from './api.service';
@@ -22,6 +23,7 @@ import { ApiService } from './api.service';
 })
 @RouteConfig([
     { path: '/login', name: 'Login', component: LoginComponent },
+    { path: '/logout', name: 'Logout', component: LogoutComponent },
     { path: '/users', name: 'Users', component: UsersComponent, useAsDefault: true },
     { path: '/users/:username/stat', name: 'UserStat', component: UserStatComponent },
 ])

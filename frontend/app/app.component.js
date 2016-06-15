@@ -14,6 +14,7 @@ var http_1 = require('@angular/http');
 var login_component_1 = require('./login.component');
 var users_component_1 = require('./users.component');
 var user_stat_component_1 = require('./user-stat.component');
+var logout_component_1 = require('./logout.component');
 var token_service_1 = require('./token.service');
 var api_service_1 = require('./api.service');
 var AppComponent = (function () {
@@ -28,6 +29,7 @@ var AppComponent = (function () {
         }),
         router_deprecated_1.RouteConfig([
             { path: '/login', name: 'Login', component: login_component_1.LoginComponent },
+            { path: '/logout', name: 'Logout', component: logout_component_1.LogoutComponent },
             { path: '/users', name: 'Users', component: users_component_1.UsersComponent, useAsDefault: true },
             { path: '/users/:username/stat', name: 'UserStat', component: user_stat_component_1.UserStatComponent },
         ]), 
