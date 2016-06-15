@@ -38,7 +38,7 @@ def get_profile_info(profile_data):
         'biography': profile_data['biography'],
         'external_url': profile_data['external_url'],
         'full_name': profile_data['full_name'],
-        'profile_pic_url': profile_data['profile_pic_url_hd'],
+        'profile_pic_url': profile_data.get('profile_pic_url_hd') or profile_data.get('profile_pic_url')
     }
 
 
