@@ -12,12 +12,9 @@ export class ApiService {
 
     getDefaultHeaders() {
 
-        let csrfToken = Cookie.get('csrftoken');
 
         let headers = new Headers({
             'Content-Type': 'application/json',
-            'X-CSRFToken': csrfToken,
-            'Authorization': 'Token ' + this.token.getToken()
         });
 
         let token = this.token.getToken()
@@ -32,7 +29,6 @@ export class ApiService {
     post(url: string, data: any) {
 
         let body = JSON.stringify(data);
-        let csrfToken = Cookie.get('csrftoken');
         let headers = this.getDefaultHeaders();
 
         return this.http.post(url, body, { headers: headers }).toPromise();
@@ -40,7 +36,6 @@ export class ApiService {
 
     delete(url: string) {
 
-        let csrfToken = Cookie.get('csrftoken');
         let headers = this.getDefaultHeaders();
 
         return this.http.delete(url, { headers: headers }).toPromise();
