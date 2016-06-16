@@ -12,3 +12,7 @@ bbash:
 
 fbash:
 	docker exec -it instalytics_frontend_1 bash
+
+
+up:
+	docker-compose up -d
