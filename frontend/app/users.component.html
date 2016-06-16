@@ -14,7 +14,12 @@
 					<p>{{ user.biography }}</p>
 					<p><a target="_blank" href="{{ user.external_url }}">{{ user.external_url }}</a></p>
 				</td>
-				<td><a (click)="onUserRemove(user.username)">удалить</a></td>
+				<td>
+					<small>
+						<a (click)="onUserRemove(user.username)">remove</a>
+						<a (click)="onShowLog(user.username)">changelog</a>
+					</small>
+				</td>
 			</tr>
 		</table>
 	</div>

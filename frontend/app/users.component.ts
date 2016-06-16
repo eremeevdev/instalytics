@@ -37,6 +37,10 @@ export class UsersComponent implements OnInit {
             });
     }
 
+    onShowLog(username: string) {
+        this.router.navigate(['ChangeLog', { username: username }]);
+    }
+
     ngOnInit() {
 
         this.api.get('/api/insta_users/')
