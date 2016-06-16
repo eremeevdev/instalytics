@@ -10,7 +10,12 @@
 			<tbody>
 				<tr *ngFor="let change of log">
 					<td>{{ change.datetime }}</td>
-					<td>{{ change.change }}</td>
+					<td>
+						<p *ngIf="change.change.biography"><b>Bio:</b> {{ change.change.bio }}</p>
+						<p *ngIf="change.change.external_url"><b>Url:</b> <a href="{{ change.change.external_url }}">{{ change.change.external_url }}</a></p>
+						<p *ngIf="change.change.full_name"><b>Full Name:</b> {{ change.change.full_name }}</p>
+						<p *ngIf="change.change.profile_pic_url"><b>Avatar:</b> <img [src]="change.change.profile_pic_url" /></p>
+					</td>
 				</tr>
 			</tbody>
 		</table>
