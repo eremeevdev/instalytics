@@ -1,9 +1,14 @@
-<h1>Users Component</h1>
 <user-add (onUserAdd)="onUserAdd($event)"></user-add>
 
-<ul>
-	<li *ngFor="let user of users">
-		<a (click)="onUserClick(user.username)">{{ user.username }}</a>
-		<a (click)="onUserRemove(user.username)">x</a>
-	</li>
-</ul>
+<div class="row">
+	<div class="col-xs-12">
+		<table class="table table-striped">
+			<tr *ngFor="let user of users">
+				<td><img [src]="user.profile_pic_url" class="img-responsive" /></td>
+				<td><a (click)="onUserClick(user.username)">{{ user.username }}</a></td>
+				<td><a (click)="onUserRemove(user.username)">удалить</a></td>
+			</tr>
+		</table>
+	</div>
+</div>
+

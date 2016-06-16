@@ -5,7 +5,7 @@ from analytics.models import InstaUser, Stat, ChangeLog
 class InstaUserSerializer(ModelSerializer):
     class Meta:
         model = InstaUser
-        fields = ('username',)
+        fields = ('username', 'profile_pic_url', 'full_name')
 
 
 class StatSerializer(ModelSerializer):
