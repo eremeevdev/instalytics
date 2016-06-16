@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import { Component, DoCheck } from '@angular/core';
 
 import { RouteConfig, ROUTER_DIRECTIVES, ROUTER_PROVIDERS } from '@angular/router-deprecated';
 
@@ -24,4 +24,13 @@ import { ApiService } from './api.service';
     { path: '/users', name: 'Users', component: UsersComponent, useAsDefault: true },
     { path: '/users/:username/stat', name: 'UserStat', component: UserStatComponent },
 ])
-export class AppComponent { }
+export class AppComponent implements DoCheck {
+
+	loggedIn: boolean;
+
+	constructor(private token: TokenService) { }
+
+	ngDoCheck() {
+		this.loggedIn = this.token.getToken() ? true : false;	
+	}
+}

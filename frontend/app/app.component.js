@@ -18,8 +18,12 @@ var logout_component_1 = require('./logout.component');
 var token_service_1 = require('./token.service');
 var api_service_1 = require('./api.service');
 var AppComponent = (function () {
-    function AppComponent() {
+    function AppComponent(token) {
+        this.token = token;
     }
+    AppComponent.prototype.ngDoCheck = function () {
+        this.loggedIn = this.token.getToken() ? true : false;
+    };
     AppComponent = __decorate([
         core_1.Component({
             selector: 'my-app',
@@ -33,7 +37,7 @@ var AppComponent = (function () {
             { path: '/users', name: 'Users', component: users_component_1.UsersComponent, useAsDefault: true },
             { path: '/users/:username/stat', name: 'UserStat', component: user_stat_component_1.UserStatComponent },
         ]), 
-        __metadata('design:paramtypes', [])
+        __metadata('design:paramtypes', [token_service_1.TokenService])
     ], AppComponent);
     return AppComponent;
 }());
