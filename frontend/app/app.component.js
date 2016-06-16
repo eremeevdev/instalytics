@@ -14,6 +14,7 @@ var http_1 = require('@angular/http');
 var login_component_1 = require('./login.component');
 var users_component_1 = require('./users.component');
 var user_stat_component_1 = require('./user-stat.component');
+var change_log_component_1 = require('./change-log.component');
 var logout_component_1 = require('./logout.component');
 var token_service_1 = require('./token.service');
 var api_service_1 = require('./api.service');
@@ -36,6 +37,7 @@ var AppComponent = (function () {
             { path: '/logout', name: 'Logout', component: logout_component_1.LogoutComponent },
             { path: '/users', name: 'Users', component: users_component_1.UsersComponent, useAsDefault: true },
             { path: '/users/:username/stat', name: 'UserStat', component: user_stat_component_1.UserStatComponent },
+            { path: '/users/:username/log', name: 'ChangeLog', component: change_log_component_1.ChangeLogComponent },
         ]), 
         __metadata('design:paramtypes', [token_service_1.TokenService])
     ], AppComponent);
