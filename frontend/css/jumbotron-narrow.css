@@ -81,3 +81,7 @@ body {
 .user-add-form {
   margin-bottom: 15px;
 }
+
+a {
+  cursor: pointer;
+}

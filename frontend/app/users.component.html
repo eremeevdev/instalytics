@@ -2,10 +2,18 @@
 
 <div class="row">
 	<div class="col-xs-12">
-		<table class="table table-striped">
+		<table class="table table-hover">
 			<tr *ngFor="let user of users">
-				<td><img [src]="user.profile_pic_url" class="img-responsive" /></td>
-				<td><a (click)="onUserClick(user.username)">{{ user.username }}</a></td>
+				<td>
+					<a href="http://instagram.com/{{ user.username }}" target="_blank">
+						<img [src]="user.profile_pic_url" class="img-responsive" />
+					</a>
+				</td>
+				<td>
+					<a (click)="onUserClick(user.username)">{{ user.username }}</a>
+					<p>{{ user.biography }}</p>
+					<p><a target="_blank" href="{{ user.external_url }}">{{ user.external_url }}</a></p>
+				</td>
 				<td><a (click)="onUserRemove(user.username)">удалить</a></td>
 			</tr>
 		</table>
