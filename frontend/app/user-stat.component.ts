@@ -24,7 +24,7 @@ export class UserStatComponent implements OnInit {
 			})
 			.catch((err) => {
                 console.log(err);
-                if (err.status == 401) {
+                if (err.status == 401 || err.status == 403) {
                     this.router.navigate(['Login']);
                 }
 			});
